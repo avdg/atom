@@ -104,7 +104,7 @@ function guessPython () {
         failNoPython()
       } else {
         console.warn('fs.stat on python executable failed: ' + err)
-        console.warn('Did you installed python correctly?')
+        console.warn('Did you install python correctly?')
 	process.exit(1)
       }
       return
@@ -121,7 +121,7 @@ function checkPythonVersion () {
   execFile(python, ['-c', 'import platform; print(platform.python_version());'], { env: env }, function (err, stdout) {
     if (err) {
       console.warn('Could not run python: ' + err)
-      console.warn('Did you installed python correctly?')
+      console.warn('Did you install python correctly?')
       process.exit(1)
       return
     }
