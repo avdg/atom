@@ -4,6 +4,7 @@ var fs = require('fs');
 var path = require('path');
 var extend = require('util')._extend;
 var execFile = require('child_process').execFile;
+var which = require('./vendor/which/which');
 
 var nodeVersion = process.versions.node.split('.')
 var nodeMajorVersion = +nodeVersion[0]
@@ -72,19 +73,19 @@ executeCommands(commands, process.exit);
 function checkPython () {
   python = process.env.PYTHON || 'python';
   // log.verbose('check python', 'checking for Python executable "%s" in the PATH', python)
-  // which(python, function (err, execPath) {
-    // if (err) {
+  which(python, function (err, execPath) {
+    if (err) {
       // log.verbose('`which` failed', python, err)
       if (win) {
         guessPython()
       } else {
-        // failNoPython()
+        failNoPython()
       }
-    // } else {
+    } else {
       // log.verbose('`which` succeeded', python, execPath)
-      // checkPythonVersion()
-    // }
-  // })
+      checkPythonVersion()
+    }
+  })
 }
 
 // Called on Windows when "python" isn't available in the current $PATH.
