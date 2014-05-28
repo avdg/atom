@@ -103,7 +103,8 @@ function guessPython () {
       if (err.code == 'ENOENT') {
         failNoPython()
       } else {
-        console.warn(err)
+        console.warn('fs.stat on python executable failed: ' + err)
+        console.warn('Did you installed python correctly?')
 	process.exit(1)
       }
       return
@@ -119,7 +120,8 @@ function checkPythonVersion () {
 
   execFile(python, ['-c', 'import platform; print(platform.python_version());'], { env: env }, function (err, stdout) {
     if (err) {
-      console.warn(err)
+      console.warn('Could not run python: ' + err)
+      console.warn('Did you installed python correctly?')
       process.exit(1)
       return
     }
