@@ -135,7 +135,7 @@ function checkPythonVersion () {
       // log.silly('stripping "rc" identifier from version')
       version = version.replace(/rc(.*)$/ig, '')
     }
-    var range = new RegExp('^\w*2.7.[0-9]+\w*$') // semver.Range('>=2.5.0 <3.0.0')
+    var range = new RegExp('^\w*2.(5|6|7).[0-9]+\w*$') // semver.Range('>=2.5.0 <3.0.0')
     if (range.test(version)) {
       // getNodeDir()
     } else {
