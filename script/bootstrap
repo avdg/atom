@@ -97,7 +97,7 @@ function guessPython () {
       } else {
         console.warn('fs.stat on ' + pythonPath + ' failed: ' + err)
         console.warn('Did you install python correctly?')
-	process.exit(1)
+        process.exit(1)
       }
       return
     }
